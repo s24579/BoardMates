@@ -1,6 +1,6 @@
 // Profile.js
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, Image, StyleSheet } from 'react-native';
 
 const Profile = ({ navigation }) => {
     return (
@@ -10,6 +10,15 @@ const Profile = ({ navigation }) => {
                 <Text style={styles.titleText}>*NickName*</Text>
                 <Button title="Edit Profile" onPress={() => console.log('Edit Profile button pressed')} />
             </View>
+
+            {/* Avatar */}
+            <Image source={require('../assets/avatar.png')} style={styles.avatar} />
+
+            {/* User Description */}
+            <Text style={styles.descriptionText}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur odio id purus ultrices, non
+                accumsan elit tristique. Vestibulum eget mauris ac nisi fermentum fermentum.
+            </Text>
 
             {/* Favorite Games Section */}
             <View style={styles.section}>
@@ -28,7 +37,6 @@ const Profile = ({ navigation }) => {
                 <View style={styles.placeholder}></View>
                 <View style={styles.placeholder}></View>
             </View>
-
         </View>
     );
 };
@@ -38,6 +46,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        padding: 16,
     },
     topBar: {
         flexDirection: 'row',
@@ -49,6 +58,17 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: 24,
+    },
+    avatar: {
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        marginVertical: 20,
+    },
+    descriptionText: {
+        fontSize: 16,
+        textAlign: 'center',
+        marginBottom: 20,
     },
     section: {
         marginTop: 20,
