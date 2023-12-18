@@ -9,12 +9,6 @@
     "web": "expo start --web"
   },
   "dependencies": {
-<<<<<<< Updated upstream
-=======
-    "@react-native-community/masked-view": "^0.1.11",
-    "@react-navigation/native": "^6.1.9",
-    "@react-navigation/stack": "^6.3.20",
->>>>>>> Stashed changes
     "expo": "~49.0.15",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
