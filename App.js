@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Map from './pages/Map';
 import Events from './pages/Events';
+import AddEvent from './pages/AddEvent';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ const App = () => {
                 <Stack.Screen name="Profile" component={Profile} />
                 <Stack.Screen name="Map" component={Map} />
                 <Stack.Screen name="Events" component={Events} />
+                <Stack.Screen name="AddEvent" component={AddEvent} />
             </Stack.Navigator>
         </NavigationContainer>
     );

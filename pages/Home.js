@@ -25,7 +25,7 @@ const Home = ({ navigation }) => {
                 <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('Profile')}>
                     <Text style={styles.buttonText}>Profile</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => console.log('Add Event button pressed')}>
+                <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('AddEvent')}>
                     <Text style={styles.buttonText}>Add Event</Text>
                 </TouchableOpacity>
             </View>
