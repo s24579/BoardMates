@@ -8,7 +8,11 @@ const Profile = ({ navigation }) => {
             {/* Top Bar */}
             <View style={styles.topBar}>
                 <Text style={styles.titleText}>*NickName*</Text>
-                <Button title="Edit Profile" onPress={() => console.log('Edit Profile button pressed')} />
+                <View style={styles.buttonContainer}>
+                    <Button title="Edit Profile" style={styles.button} onPress={() => console.log('Edit Profile button pressed')} />
+                    <View style={{ marginBottom: 5 }} />
+                    <Button title="Settings" style={styles.button} onPress={() => console.log('Settings button pressed')} />
+                </View>
             </View>
 
             {/* Avatar */}
@@ -58,6 +62,10 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: 24,
+    },
+    buttonContainer: {
+        flexDirection: 'column',
+        alignItems: 'flex-end',
     },
     avatar: {
         width: 100,
