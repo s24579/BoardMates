@@ -1,7 +1,6 @@
 // Events.js
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
-
+import { EventStyles as styles } from '../styles/EventStyles.js';
 
 const eventsData = [
     { id: '1', game: 'Monopoly', place: 'The Board Game Bar', dateTime: '15.01.2023 15:00', players: '5/10' },
@@ -22,28 +21,13 @@ const eventsData = [
 ];
 
 const Events = () => {
-    const renderEventItem = ({ item }) => (
+    const renderEventItem = () => (
         <View style={styles.eventItem}>
-            {/* Left container for event details */}
-            <View style={styles.detailsContainer}>
-                <Text style={styles.detailText}>{`Game: ${item.game}`}</Text>
-                <Text style={styles.detailText}>{`Place: ${item.place}`}</Text>
-                <Text style={styles.detailText}>{`Date and Time: ${item.dateTime}`}</Text>
-                <Text style={styles.detailText}>{`Players: ${item.players}`}</Text>
-            </View>
-
-            {/* Right container for View and Join buttons */}
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={() => console.log(`View ${item.game} event`)}>
-                    <Text style={styles.buttonText}>View</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => console.log(`Join ${item.game} event`)}>
-                    <Text style={styles.buttonText}>Join</Text>
-                </TouchableOpacity>
-            </View>
+            <eventItemData />
+            <eventItemButtons />
         </View>
     );
-
+    
     return (
         <View style={styles.container}>
             <FlatList
@@ -55,43 +39,30 @@ const Events = () => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 16,
-    },
-    eventItem: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 16,
-        padding: 16,
-        backgroundColor: '#3498db',
-        borderWidth: 1,
-        borderColor: '#3498db',
-        borderRadius: 8,
-    },
-    detailsContainer: {
-        flex: 1,
-    },
-    detailText: {
-        fontSize: 16,
-        marginBottom: 8,
-    },
-    buttonContainer: {
-        alignItems: 'flex-end',
-    },
-    button: {
-        backgroundColor: '#fff',
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-        borderRadius: 8,
-        borderWidth: 1,
-        borderColor: '#3498db',
-        marginBottom: 16,
-    },
-    buttonText: {
-        fontSize: 18,
-    },
-});
+const eventItemData = ({ item }) => {
+    {/* Left container for event details */}
+    return (
+        <View style={styles.detailsContainer}>
+            <Text style={styles.detailText}>{`Game: ${item.game}`}</Text>
+            <Text style={styles.detailText}>{`Place: ${item.place}`}</Text>
+            <Text style={styles.detailText}>{`Date and Time: ${item.dateTime}`}</Text>
+            <Text style={styles.detailText}>{`Players: ${item.players}`}</Text>
+        </View>
+    );
+};
 
-export default Events;
+const eventItemButtons = ({ item }) => {
+    {/* Right container for View and Join buttons */}
+    return (
+        <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button} onPress={() => console.log(`View ${item.game} event`)}>
+                <Text style={styles.buttonText}>View</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => console.log(`Join ${item.game} event`)}>
+                <Text style={styles.buttonText}>Join</Text>
+            </TouchableOpacity>
+        </View>
+    );
+};
+
+export { Events };
