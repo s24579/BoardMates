@@ -7,6 +7,7 @@ import Profile from './pages/Profile';
 import Map from './pages/Map';
 import Events from './pages/Events';
 import Login from './pages/Login';
+import Games from './pages/Games';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const App = () => {
                 <Stack.Screen name="Map" component={Map} />
                 <Stack.Screen name="Events" component={Events} />
                 <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="Games" component={Games} />
             </Stack.Navigator>
         </NavigationContainer>
     );
