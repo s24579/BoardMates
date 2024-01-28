@@ -1,5 +1,6 @@
 // styles/ProfileStyles.js
 import { StyleSheet } from "react-native";
+import { COLORS } from "./Colors";
 
 const profileStyles = StyleSheet.create({
     container: {
@@ -29,7 +30,7 @@ const profileStyles = StyleSheet.create({
     placeholder: {
         width: '100%',
         height: 50,
-        backgroundColor: '#ccc',
+        backgroundColor: COLORS.lightgray,
         marginBottom: 10,
     },
 });

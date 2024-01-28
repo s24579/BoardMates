@@ -1,4 +1,4 @@
-// components/MuiDatePicker.tsx
+// components/TheDatePicker.tsx
 import React from "react";
 import { useField, useFormikContext } from "formik";
 import DatePicker from "react-datepicker";

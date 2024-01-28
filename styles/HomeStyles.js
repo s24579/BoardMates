@@ -1,5 +1,6 @@
 // styles/HomeStyles.js
 import { StyleSheet } from "react-native";
+import { COLORS } from "./Colors";
 
 const homeStyles = StyleSheet.create({
     container: {
@@ -10,7 +11,7 @@ const homeStyles = StyleSheet.create({
         flex: 2, // 40% of the screen
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#3498db',
+        backgroundColor: COLORS.brightblue,
     },
     middleContainer: {
         flex: 2,
@@ -34,16 +35,19 @@ const homeStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 1,
-        borderColor: '#3498db',
+        borderColor: COLORS.brightblue,
         borderRadius: 10,
     },
     buttonText: {
         fontSize: 16,
-        color: '#3498db',
+        color: COLORS.brightblue,
     },
     squaredButton: {
         aspectRatio: 1,
     },
+    logo: {
+        resizeMode: 'contain',
+    }
 });
 
 export { homeStyles };

@@ -1,5 +1,6 @@
 // styles/EventStyles.js
 import { StyleSheet } from "react-native";
+import { COLORS } from "./Colors";
 
 const eventStyles = StyleSheet.create({
     container: {
@@ -11,9 +12,9 @@ const eventStyles = StyleSheet.create({
         justifyContent: 'space-between',
         marginBottom: 16,
         padding: 16,
-        backgroundColor: '#3498db',
+        backgroundColor: COLORS.brightblue,
         borderWidth: 1,
-        borderColor: '#3498db',
+        borderColor: COLORS.brightblue,
         borderRadius: 8,
     },
     detailsContainer: {
@@ -32,7 +33,7 @@ const eventStyles = StyleSheet.create({
         paddingHorizontal: 16,
         borderRadius: 8,
         borderWidth: 1,
-        borderColor: '#3498db',
+        borderColor: COLORS.brightblue,
         marginBottom: 16,
     },
     buttonText: {

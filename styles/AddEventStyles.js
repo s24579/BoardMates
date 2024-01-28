@@ -1,5 +1,6 @@
 // styles/AddEventStyles.js
 import { StyleSheet } from "react-native";
+import { COLORS } from "./Colors";
 
 const addEventStyles = StyleSheet.create({
     container: {
@@ -12,7 +13,7 @@ const addEventStyles = StyleSheet.create({
     },
     input: {
         paddingTop: 2,
-        backgroundColor: 'lightgray'
+        backgroundColor: COLORS.lightgray
     },
     item: {
         fontSize: 18,

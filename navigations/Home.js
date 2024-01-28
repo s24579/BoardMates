@@ -1,14 +1,21 @@
 // Home.js
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { HomeStyles as styles } from '../styles/HomeStyles.js';
+import { useNavigation } from '@react-navigation/native';
 
-const Home = ({ navigation }) => {
+const navigation = useNavigation();
+
+const Home = () => {
     return (
         <View style={styles.container}>
             {/* Top 40% of the screen */}
             <View style={styles.topContainer}>
                 <Text style={styles.titleText}>Board Mates</Text>
+                <Image 
+                style={styles.logo}
+                source={require('../assets/Powered by BGG.png')}
+                />
             </View>
 
             {/* Middle buttons */}
