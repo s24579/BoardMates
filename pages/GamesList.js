@@ -1,43 +1,56 @@
-//GamesList.js
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import GamesData from '../bgg/GamesData.json';
 
 const GamesList = () => {
     const [topGames, setTopGames] = useState([]);
 
-
     useEffect(() => {
-
-        const xxd = GamesData.map(obj=>{
+        const xxd = GamesData.map(obj => {
             return {
                 name: obj.name,
                 rank: obj.rank,
                 yearpublished: obj.yearpublished,
             }
-
         })
-            .sort((a,b)=>{
-                return parseInt(a.rank)-parseInt(b.rank)
-            })
-            .slice(0, 10)
-        console.log(xxd);
+            .sort((a, b) => parseInt(a.rank) - parseInt(b.rank));
+
         setTopGames(xxd);
     }, []);
 
+    const handleGameItemPress = (item) => {
+        // Handle the press event here, for example:
+        console.log('Clicked on game:', item.name);
+    };
+
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>Top 10 Games</Text>
+            <View style={styles.header}>
+                <Text style={styles.headingLeft}>List Of Games</Text>
+                <View style={styles.filterContainer}>
+                    <TouchableOpacity style={[styles.filterItem]}>
+                        <Image style={styles.glass} source={require('../assets/magnifying-glass.png')} />
+                    </TouchableOpacity>
+                    <Text style={styles.headingRight}>Filter by</Text>
+                    <TouchableOpacity style={styles.filterItem}>
+                        <Text style={styles.filterText}>Rank</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.filterItem}>
+                        <Text style={styles.filterText}>Year</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
             <FlatList
                 data={topGames}
                 renderItem={({ item }) => (
-                    <View style={styles.gameItem}>
-                        <Text>{item.name}</Text>
-                        <Text>Year Published: {item.yearpublished}</Text>
+                    <TouchableOpacity onPress={() => handleGameItemPress(item)} style={styles.gameItem}>
                         <Text>Rank: {item.rank}</Text>
-                    </View>
+                        <Text>{item.name}</Text>
+                        <Text>Year: {item.yearpublished}</Text>
+                    </TouchableOpacity>
                 )}
             />
+            <Text style={styles.footer}>Data used is provided by BoardGameGeek.</Text>
         </View>
     );
 };
@@ -47,13 +60,48 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
     },
-    heading: {
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 30,
+    },
+    headingLeft: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 10,
+    },
+    glass: {
+        height: 20,
+        width: 20,
+        marginRight: 15,
+    },
+    headingRight: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    filterContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    filterText: {
+        fontSize: 17,
+    },
+    filterItem: {
+        marginLeft: 15,
     },
     gameItem: {
-        marginBottom: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 16,
+        padding: 16,
+        backgroundColor: '#3498db',
+        borderWidth: 1,
+        borderColor: '#3498db',
+        borderRadius: 8,
+    },
+    footer: {
+        fontSize: 10,
+        fontWeight: 'bold',
+        marginLeft: 'auto',
     },
 });
 
