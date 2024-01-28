@@ -24,7 +24,7 @@ const Profile = ({ navigation }) => {
                 accumsan elit tristique. Vestibulum eget mauris ac nisi fermentum fermentum.
             </Text>
 
-            {/* Favorite Games Section */}
+            {/* Favorite GamesList Section */}
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>Favorite Games</Text>
                 {/* Placeholder content */}
