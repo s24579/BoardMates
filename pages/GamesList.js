@@ -1,26 +1,61 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native';
 import GamesData from '../bgg/GamesData.json';
 
 const GamesList = () => {
     const [topGames, setTopGames] = useState([]);
+    const [sortByYear, setSortByYear] = useState(false); // State to track sorting mode
+    const [numGamesDisplayed, setNumGamesDisplayed] = useState(50); // State to track number of games displayed
+    const [searchQuery, setSearchQuery] = useState(''); // State to track search query
 
     useEffect(() => {
-        const xxd = GamesData.map(obj => {
-            return {
-                name: obj.name,
-                rank: obj.rank,
-                yearpublished: obj.yearpublished,
-            }
-        })
-            .sort((a, b) => parseInt(a.rank) - parseInt(b.rank));
+        // Function to sort games by rank
+        const sortGamesByRank = () => {
+            return [...GamesData].sort((a, b) => parseInt(a.rank) - parseInt(b.rank));
+        };
 
-        setTopGames(xxd);
-    }, []);
+        // Function to sort games by year
+        const sortGamesByYear = () => {
+            return [...GamesData].sort((a, b) => parseInt(b.yearpublished) - parseInt(a.yearpublished));
+        };
+
+        // Filter and sort games based on search query, sorting mode, and limit to the number of games displayed
+        const filteredGames = GamesData.filter((game) =>
+            game.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+        const sortedGames = sortByYear ? sortGamesByYear() : sortGamesByRank();
+        const displayedGames = filteredGames.slice(0, numGamesDisplayed);
+        setTopGames(displayedGames);
+    }, [sortByYear, numGamesDisplayed, searchQuery]);
 
     const handleGameItemPress = (item) => {
         // Handle the press event here, for example:
         console.log('Clicked on game:', item.name);
+    };
+
+    const sortByRank = () => {
+        // Sort by rank
+        setSortByYear(false);
+        // Reset numGamesDisplayed to 50
+        setNumGamesDisplayed(50);
+    };
+
+    const sortByYearPressed = () => {
+        // Sort by year
+        setSortByYear(true);
+        // Reset numGamesDisplayed to 50
+        setNumGamesDisplayed(50);
+    };
+
+    const loadMoreGames = () => {
+        // Increment the number of games displayed by 50
+        setNumGamesDisplayed(prev => prev + 50);
+    };
+
+    const handleSearchInputChange = (text) => {
+        // Update search query
+        setSearchQuery(text);
     };
 
     return (
@@ -31,11 +66,17 @@ const GamesList = () => {
                     <TouchableOpacity style={[styles.filterItem]}>
                         <Image style={styles.glass} source={require('../assets/magnifying-glass.png')} />
                     </TouchableOpacity>
+                    <TextInput
+                        style={styles.searchInput}
+                        placeholder="Search game..."
+                        onChangeText={handleSearchInputChange}
+                        value={searchQuery}
+                    />
                     <Text style={styles.headingRight}>Filter by</Text>
-                    <TouchableOpacity style={styles.filterItem}>
+                    <TouchableOpacity style={styles.filterItem} onPress={sortByRank}>
                         <Text style={styles.filterText}>Rank</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.filterItem}>
+                    <TouchableOpacity style={styles.filterItem} onPress={sortByYearPressed}>
                         <Text style={styles.filterText}>Year</Text>
                     </TouchableOpacity>
                 </View>
@@ -47,6 +88,11 @@ const GamesList = () => {
                         <Text>Rank: {item.rank}</Text>
                         <Text>{item.name}</Text>
                         <Text>Year: {item.yearpublished}</Text>
+                    </TouchableOpacity>
+                )}
+                ListFooterComponent={() => (
+                    <TouchableOpacity onPress={loadMoreGames} style={styles.loadMoreButton}>
+                        <Text style={styles.loadMoreText}>Load more</Text>
                     </TouchableOpacity>
                 )}
             />
@@ -73,6 +119,14 @@ const styles = StyleSheet.create({
         height: 20,
         width: 20,
         marginRight: 15,
+    },
+    searchInput: {
+        flex: 1,
+        height: 40,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        paddingHorizontal: 10,
     },
     headingRight: {
         fontSize: 20,
@@ -102,6 +156,15 @@ const styles = StyleSheet.create({
         fontSize: 10,
         fontWeight: 'bold',
         marginLeft: 'auto',
+    },
+    loadMoreButton: {
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    loadMoreText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#3498db',
     },
 });
 
