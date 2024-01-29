@@ -18,7 +18,7 @@ const Home = () => {
                 />
             </View>
 
-            {/* Middle buttons */}
+            {/* Top buttons */}
             <View style={styles.middleContainer}>
                 <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('Events')}>
                     <Text style={styles.buttonText}>Look for Events</Text>
@@ -28,13 +28,22 @@ const Home = () => {
                 </TouchableOpacity>
             </View>
 
-            {/* Bottom buttons */}
+            {/* Middle buttons */}
             <View style={styles.bottomContainer}>
                 <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('Profile')}>
                     <Text style={styles.buttonText}>Profile</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('AddEvent')}>
                     <Text style={styles.buttonText}>Add Event</Text>
+                </TouchableOpacity>
+            </View>
+            {/* Bottom buttons */}
+            <View style={styles.bottomContainer}>
+                <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('Games')}>
+                    <Text style={styles.buttonText}>Games</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => console.log('Placeholder button pressed')}>
+                    <Text style={styles.buttonText}>Placeholder</Text>
                 </TouchableOpacity>
             </View>
         </View>

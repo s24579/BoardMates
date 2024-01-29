@@ -1,9 +1,11 @@
 // EventDataMockup.js
 import React from "react";
+import dayjs from "dayjs";
 
 const placeHolder = "./assets/map.png"
 const placeScription = "Justice is a 3 to 5-player, thematic, competitive, tableau-building game set in the same Dwarven society of Odrixia where Factory 42 is set, where players, as members of the Council of Law and Order, determine the guilt of accused criminals. It's a trick-taking game where players utilize won cards strategically to influence the fate of suspects. With hidden scoring objectives, 'Justice' presents a blend of cooperation and rivalry, culminating in a thrilling game lasting approximately 45 - 60 minutes. Immerse yourself in this captivating universe and experience the intricate balance between trick-taking mechanics and strategic decision-making."
-
+const mockDateFrom = dayjs().add(1, "day")
+const mockDateTo = dayjs().add(2, "day")
 export let eventsData = [
     { 
         id: '1', 
@@ -14,8 +16,8 @@ export let eventsData = [
         location: 'The Board Game Bar', 
         latitude: 1.00000,
         longitude: 1.0000,
-        dateFrom: '15.02.2024 15:00',
-        dateTo: '16.02.2024 01:00',
+        dateFrom: mockDateFrom,
+        dateTo: mockDateTo,
     },
     { 
         id: '2', 
@@ -26,8 +28,8 @@ export let eventsData = [
         location: 'Dicey Tavern', 
         latitude: 2.00000,
         longitude: 2.0000,
-        dateFrom: '16.02.2024 18:30',
-        dateTo: '17.02.2024 01:00',
+        dateFrom: mockDateFrom.add(1, 'day'),
+        dateTo: mockDateTo.add(2, 'day'),
     },
     { 
         id: '3', 
@@ -38,8 +40,8 @@ export let eventsData = [
         location: 'Pub of Routes', 
         latitude: 3.00000,
         longitude: 3.0000,
-        dateFrom: '20.01.2024 20:00',
-        dateTo: '02.02.2024 01:00',
+        dateFrom: mockDateFrom.add(2, 'day'),
+        dateTo: mockDateTo.add(3, 'day'),
     },
     { 
         id: '4', 
@@ -50,8 +52,8 @@ export let eventsData = [
         location: 'Word Haven', 
         latitude: 4.00000,
         longitude: 4.0000,
-        dateFrom: '22.01.2024 14:30',
-        dateTo: '01.02.2024 01:00',
+        dateFrom: mockDateFrom.add(3, 'day'),
+        dateTo: mockDateTo.add(4, 'day'),
     },
     { 
         id: '5', 
@@ -62,8 +64,8 @@ export let eventsData = [
         location: 'Strategic Spirits', 
         latitude: 5.00000,
         longitude: 5.0000,
-        dateFrom: '25.01.2024 19:45',
-        dateTo: '01.02.2024 01:00',
+        dateFrom: mockDateFrom.add(4, 'day'),
+        dateTo: mockDateTo.add(5, 'day'),
     },
     { 
         id: '6', 
@@ -74,8 +76,8 @@ export let eventsData = [
         location: 'Mystery Pub', 
         latitude: 6.00000,
         longitude: 6.0000,
-        dateFrom: '28.01.2023 17:15',
-        dateTo: '01.02.2024 02:00',
+        dateFrom: mockDateFrom.add(5, 'day'),
+        dateTo: mockDateTo.add(6, 'day'),
     },
     { 
         id: '7', 
@@ -86,8 +88,8 @@ export let eventsData = [
         location: 'Artistic Ales', 
         latitude: 7.00000,
         longitude: 7.0000,
-        dateFrom: '02.02.2024 16:45',
-        dateTo: '05.02.2024 01:00',
+        dateFrom: mockDateFrom.add(6, 'day'),
+        dateTo: mockDateTo.add(7, 'day').add(1, 'hour'),
     },
     { 
         id: '8', 
@@ -98,8 +100,8 @@ export let eventsData = [
         location: 'Naval Nectar', 
         latitude: 8.00000,
         longitude: 8.0000,
-        dateFrom: '05.02.2024 21:00',
-        dateTo: '06.02.2024 01:00',
+        dateFrom: mockDateFrom.add(7, 'day'),
+        dateTo: mockDateTo.add(8, 'day').add(1, 'hour'),
     },
     { 
         id: '9', 
@@ -110,8 +112,8 @@ export let eventsData = [
         location: 'Colorful Cards Club', 
         latitude: 9.00000,
         longitude: 9.0000,
-        dateFrom: '09.02.2024 19:30',
-        dateTo: '10.02.2024 01:00',
+        dateFrom: mockDateFrom.add(8, 'day'),
+        dateTo: mockDateTo.add(9, 'day').add(1, 'hour'),
     },
     { 
         id: '10', 
@@ -122,8 +124,8 @@ export let eventsData = [
         location: 'Lucky Ludus Lounge', 
         latitude: 10.00000,
         longitude: 10.0000,
-        dateFrom: '12.02.2024 14:00',
-        dateTo: '16.02.2024 01:00',
+        dateFrom: mockDateFrom.add(9, 'day'),
+        dateTo: mockDateTo.add(10, 'day').add(2, 'hour'),
     },
     { 
         id: '11', 
@@ -134,8 +136,8 @@ export let eventsData = [
         location: 'FourSquare Pub', 
         latitude: 11.00000,
         longitude: 11.0000,
-        dateFrom: '15.02.2024 18:00',
-        dateTo: '16.02.2024 01:00',
+        dateFrom: mockDateFrom.add(10, 'day').add(2, 'hour'),
+        dateTo: mockDateTo.add(11, 'day'),
     },
     { 
         id: '12', 
@@ -146,8 +148,8 @@ export let eventsData = [
         location: 'Domino Domain', 
         latitude: 12.00000,
         longitude: 12.0000,
-        dateFrom: '18.02.2024 16:15',
-        dateTo: '19.02.2024 01:00',
+        dateFrom: mockDateFrom.add(11, 'day').add(2, 'hour'),
+        dateTo: mockDateTo.add(12, 'day'),
     },
     { 
         id: '13', 
@@ -158,8 +160,8 @@ export let eventsData = [
         location: 'Checkerboard Cheers', 
         latitude: 13.00000,
         longitude: 13.0000,
-        dateFrom: '22.02.2024 20:30',
-        dateTo: '23.02.2024 01:00',
+        dateFrom: mockDateFrom.add(12, 'day').add(3, 'hour'),
+        dateTo: mockDateTo.add(13, 'day'),
     },
     { 
         id: '14', 
@@ -170,8 +172,8 @@ export let eventsData = [
         location: 'Lucky Dice Lounge', 
         latitude: 14.00000,
         longitude: 14.0000,
-        dateFrom: '25.02.2024 17:45',
-        dateTo: '26.02.2024 01:00',
+        dateFrom: mockDateFrom.add(13, 'day').add(3, 'hour'),
+        dateTo: mockDateTo.add(14, 'day'),
     },
     { 
         id: '15', 
@@ -182,7 +184,7 @@ export let eventsData = [
         location: 'Bingo Bliss Bar', 
         latitude: 15.00000,
         longitude: 15.0000,
-        dateFrom: '28.02.2024 19:00',
-        dateTo: '29.02.2024 01:00', 
+        dateFrom: mockDateFrom.add(14, 'day'),
+        dateTo: mockDateTo.add(15, 'day'),
     },
 ]

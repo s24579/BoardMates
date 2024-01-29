@@ -1,5 +1,5 @@
 // Map.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Image } from 'react-native';
 import { Callout, MapView, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { MapStyles as styles } from '../styles/MapStyles.js';
@@ -10,28 +10,6 @@ import { eventsData } from '../services/EventDataMockup.js';
 
 const navigation = useNavigation();
 const constructorHasRun = useRef(false);
-
-(() => {
-    if (constructorHasRun.current !== false) 
-        return; // if this fucks me up istg UPDATE: it ~kinda~ happened lmao
-    constructorHasRun.current = true;
-    // super(props);
-    state = {
-        latitude: 54.35203,
-        longitude: 18.6466,
-        events: [],
-        searchString: "",
-        distance: 40,
-        selectedEvent: null,
-    }
-    console.log('constructor invoked at ', window.performance.now());
-  })();
-  
-componentDidMount = () => {
-    setState({
-        events: eventsData
-    })
-}
 
 // onRegionChange = (region) => {
 //     setState({ region });
@@ -48,22 +26,21 @@ const getInitialState = () => {
     };
 };
 
-const getMyLocation = () => {
-    Geolocation.getCurrentPosition(locale => {
-        mapRef.animateRegion({
-            latitude: locale.coords.latitude,
-            longitude: locale.coords.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-        })
-        setState({
-            latitude: locale.coords.latitude,
-            longitude: locale.coords.longitude,
-        })
-    })
-}
-
 const mapSection = () => {
+
+    const getMyLocation = () => {
+        Geolocation.getCurrentPosition(locale => {
+            mapRef.animateRegion({
+                latitude: locale.coords.latitude,
+                longitude: locale.coords.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+            })
+            setLatitude(locale.coords.latitude);
+            setLongitude(locale.coords.longitude);
+        })
+    }
+
     const selectEvent = (event) => {
         props.navigation.navigate(
             "ShowEvent",
@@ -84,7 +61,7 @@ const mapSection = () => {
             // onRegionChange={onRegionChange}
             >
                 {
-                    state.events.map((coolEvent) => {
+                    events.map((coolEvent) => {
                         return (
                             <Marker coordinate={{ latitude: coolEvent.latitude, longitude: coolEvent.longitude }}>
                                 <Callout style={styles.callout} onPress={() => { selectEvent(coolEvent) }}>
@@ -122,37 +99,35 @@ const searchSection = () => {
     }
 
     const handleSearch = () => {
-        let searchedEvents = eventsData.filter(e => e.title.toLowerCase().includes(this.state.searchString.toLowerCase()) 
-        && getDistanceFromLatLonInKm(state.latitude, state.longitude, e.latitude, e.longitude) < state.distance);
-        setState({
-            events: searchedEvents
-        })
+        let searchedEvents = eventsData.filter(e => e.title.toLowerCase().includes(searchString.toLowerCase()) 
+        && getDistanceFromLatLonInKm(latitude, longitude, e.latitude, e.longitude) < distance);
+        setEvents(searchedEvents);
     }
 
     const handleReset = () => {
-        setState({ events: eventsData })
+        setEvents(eventsData);
     }
 
     return (
         <View style={styles.searchSection}>
             <SearchBar
             placeholder="Search for board mates..."
-            ref={search => state.search = search}
-            onChangeText={(text) => { setState({ searchString: text }) }}
-            value={state.searchString}
+            // ref={search => state.search = search}
+            onChangeText={(text) => { setSearchString(text) }}
+            value={searchString}
             round={true}
             lightTheme={true}
             containerStyle={styles.searchBar}
             />
             <View style={{ padding: 10 }}>
                 <Text>
-                    Events from {state.distance.toString()} km away
+                    Events from {distance.toString()} km away
                 </Text>
                 <Slider 
-                value={state.distance}
+                value={distance}
                 minimumValue={1}
                 maximumValue={50}
-                onValueChange={(value) => { setState({ distance: value }) }}
+                onValueChange={(value) => { setDistance(value) }}
                 step={1}
                 allowTouchTrack
                 thumbStyle={styles.sliderThumb}
@@ -181,6 +156,36 @@ const searchSection = () => {
 }
 
 const Map = () => {
+    const [latitude, setLatitude] = useState(0.0);
+    const [longitude, setLongitude] = useState(0.0);
+    const [events, setEvents] = useState([]);
+    const [searchString, setSearchString] = useState("");
+    const [distance, setDistance] = useState(0.0);
+    const [selectedEvent, setSelectedEvent] = useState(null);
+    // const [state, changeState] = useState({
+    //     latitude: 0.0,
+    //     longitude: 0.0,
+    //     events: [],
+    //     searchString: "",
+    //     distance: 0,
+    //     selectedEvent: null
+    // })
+
+    (() => {
+        if (constructorHasRun.current !== false) 
+            return; // if this fucks me up istg UPDATE: it ~kinda~ happened lmao
+        constructorHasRun.current = true;
+        // super(props);
+        setLatitude(54.35203);
+        setLongitude(18.6466);
+        setDistance(40);
+        useEffect(() => {
+            setEvents(eventsData)
+        })
+
+        console.log('constructor invoked at ', window.performance.now());
+    })();
+
     return (
         <View style={styles.container}>
             <Button

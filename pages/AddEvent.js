@@ -1,36 +1,22 @@
 import React, { useState } from 'react';
 import { View, Text, Button } from 'react-native';
-import DatePicker from 'react-native-date-picker';
+// import DatePicker from 'react-native-date-picker';
 import dayjs from 'dayjs';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+// import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { CustomInput } from '../utils/CustomInput.js';
 import { AddEventStyles as styles } from '../styles/AddEventStyles.js';
-import { DatePickerField } from '../components/TheDatePicker.jsx';
+// import { DatePickerField } from '../components/TheDatePicker.jsx';
 import { eventsData } from '../services/EventDataMockup.js';
+// import {apiKey} from './config';
 
-const constructorHasRun = useRef(false);
 let nextId = 0
 let lastId = eventsData[eventsData.length - 1].id
 
-(() => {
-    if (constructorHasRun.current !== false) 
-        return; // if this fucks me up istg
-    constructorHasRun.current = true;
-    // super(props);
-    state = {
-        event: null
-    }
-    console.log('constructor invoked at ', window.performance.now());
-})();
-
-const [dateFrom, setDateFrom] = useState(new Date())
-const [dateTo, setDateTo] = useState(new Date())
-const [open, setOpen] = useState(false)
 const now = dayjs().day()
 const hourFromNow = dayjs().add(1, "hour")
-const [region, setRegion] = useState()
-const [newEvent, setNewEvent] = useState([]);
+// const [region, setRegion] = useState()
 
 const eventValidationSchema = Yup.object({
     eventTitle: Yup
@@ -62,6 +48,24 @@ const eventValidationSchema = Yup.object({
   });
 
 const AddEvent = () => {
+    const constructorHasRun = useRef(false);
+    // const [dateFrom, setDateFrom] = useState(new Date())
+    // const [dateTo, setDateTo] = useState(new Date())
+    // const [open, setOpen] = useState(false)
+    const [newEvent, setNewEvent] = useState([]);
+    const [events, setEvents] = useState(eventsData)
+
+    (() => {
+        if (constructorHasRun.current !== false) 
+            return; // if this fucks me up istg
+        constructorHasRun.current = true;
+        // super(props);
+        setNewEvent(newEvent);
+        setEvents(events);
+
+        console.log('constructor invoked at ', window.performance.now());
+    })();
+
     const handleEventData = () => {
         if (lastId != 0) {
             nextId == lastId;
@@ -76,12 +80,10 @@ const AddEvent = () => {
             latitude: 160.00000,
             longitude: 16.0000,
             dateFrom: Yup.dateFrom, 
-            dateTo: Yup.dateTo
+            dateTo: Yup.dateTo,
         }
-        setState({
-            event: submittedEvent
-        });
-        setNewEvent([...eventsData, state.event]);
+        setNewEvent(submittedEvent);
+        setEvents([...eventsData, newEvent]);
     }
 
     return (
@@ -120,6 +122,12 @@ const AddEvent = () => {
                             name="locationName"
                             placeholder='Location Name'
                             keyboardType="email-address" />
+                        {/* <SafeAreaView>
+                            <GooglePlacesAutocomplete
+                            placeholder="Type a place"
+                            query={{key: apiKey}}
+                            />
+                        </SafeAreaView> */}
                         <Text style={styles.input}>from</Text>
                         <DatePickerField style={styles.input}
                             // component={CustomInput} 
@@ -148,7 +156,7 @@ const AddEvent = () => {
                             onCancel={() => {
                                 setOpen(false);
                             } } />
-                        <Field style={styles.input}         // add adding images to Events
+                        <Field style={styles.input}         // add adding images to Events after this
                             component={CustomInput}
                             name="gameTitle"
                             placeholder='Game Provided'
