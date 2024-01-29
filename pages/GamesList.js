@@ -19,14 +19,14 @@ const GamesList = () => {
             return [...GamesData].sort((a, b) => parseInt(b.yearpublished) - parseInt(a.yearpublished));
         };
 
-        // Filter and sort games based on search query, sorting mode, and limit to the number of games displayed
+        // Filter games based on search query
         const filteredGames = GamesData.filter((game) =>
             game.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
+        // Set top games based on sorting mode, filtered by search query, and limit to the number of games displayed
         const sortedGames = sortByYear ? sortGamesByYear() : sortGamesByRank();
-        const displayedGames = filteredGames.slice(0, numGamesDisplayed);
-        setTopGames(displayedGames);
+        setTopGames(searchQuery === "" ? sortedGames : filteredGames.slice(0, numGamesDisplayed));
     }, [sortByYear, numGamesDisplayed, searchQuery]);
 
     const handleGameItemPress = (item) => {
@@ -61,11 +61,8 @@ const GamesList = () => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.headingLeft}>List Of Games</Text>
                 <View style={styles.filterContainer}>
-                    <TouchableOpacity style={[styles.filterItem]}>
                         <Image style={styles.glass} source={require('../assets/magnifying-glass.png')} />
-                    </TouchableOpacity>
                     <TextInput
                         style={styles.searchInput}
                         placeholder="Search game..."
@@ -127,6 +124,9 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
         borderRadius: 5,
         paddingHorizontal: 10,
+        minWidth:150,
+        maxWidth:250,
+        marginRight:50,
     },
     headingRight: {
         fontSize: 20,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     },
     loadMoreButton: {
         alignItems: 'center',
-        marginTop: 10,
+        marginTop: 20,
     },
     loadMoreText: {
         fontSize: 16,
