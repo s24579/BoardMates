@@ -1,4 +1,4 @@
-// CustomInput.js
+// utils/CustomInput.js
 import React from 'react';
 import { Text, TextInput } from 'react-native'
 import { CustomInputStyles as styles } from '../styles/CustomInputStyles.js';

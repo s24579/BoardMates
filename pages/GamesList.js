@@ -8,14 +8,14 @@ const GamesList = () => {
     const [topGames, setTopGames] = useState([]);
 
     useEffect(() => {
-        const xxd = GamesData.map(obj => {
+        const xxd = GamesData.map(obj => {                                  // mapping from json parameters
             return {
                 name: obj.name,
                 rank: obj.rank,
                 yearpublished: obj.yearpublished,
             }
         })
-            .sort((a, b) => parseInt(a.rank) - parseInt(b.rank));
+            .sort((a, b) => parseInt(a.rank) - parseInt(b.rank));           // sort by rank
 
         setTopGames(xxd);
     }, []);
@@ -42,7 +42,7 @@ const GamesList = () => {
                     </TouchableOpacity>
                 </View>
             </View>
-            <FlatList
+            <FlatList                                                       // list of possible games
                 data={topGames}
                 renderItem={({ item }) => (
                     <TouchableOpacity onPress={() => handleGameItemPress(item)} style={styles.gameItem}>

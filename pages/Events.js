@@ -10,11 +10,11 @@ const navigation = useNavigation();
 const Events = () => {
     return (
         <View style={styles.container}>
-            <Button
+            <Button                                                     // sure hope this Back button works
                 title="<"
                 onPress={() => { navigation.navigate('Home'); }}
             />
-            <FlatList
+            <FlatList                                                   // list of events
                 data={eventsData}
                 keyExtractor={(item) => item.id}
                 renderItem={renderEventItem}

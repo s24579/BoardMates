@@ -1,4 +1,4 @@
-// ItemView.js
+// components/ItemView.js
 import React from "react";
 import { EventStyles as styles } from "../styles/EventStyles";
 

@@ -15,7 +15,7 @@ const constructorHasRun = useRef(false);
 //     setState({ region });
 // };
 
-const getInitialState = () => {
+const getInitialState = () => {                                                 // starts you off at Gdańsk
     return {
       region: {
         latitude: 54.35203,
@@ -28,7 +28,7 @@ const getInitialState = () => {
 
 const mapSection = () => {
 
-    const getMyLocation = () => {
+    const getMyLocation = () => {                                               // gets your current location
         Geolocation.getCurrentPosition(locale => {
             mapRef.animateRegion({
                 latitude: locale.coords.latitude,
@@ -43,7 +43,7 @@ const mapSection = () => {
 
     const selectEvent = (event) => {
         props.navigation.navigate(
-            "ShowEvent",
+            "ShowEvent",                                                        // redirects to the given event
             {
                 eventId: event.id
             }
@@ -53,7 +53,7 @@ const mapSection = () => {
     return (
         <View style={styles.mapSection}>
             <MapView style={styles.map}
-            provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+            provider={PROVIDER_GOOGLE}                                          // remove if not using Google Maps
             onMapReady={() => {getMyLocation}}
             ref={(ref) => { mapRef = ref }}
             initialRegion={getInitialState}
@@ -61,10 +61,10 @@ const mapSection = () => {
             // onRegionChange={onRegionChange}
             >
                 {
-                    events.map((coolEvent) => {
+                    events.map((coolEvent) => {                                 // Google Maps markers for events with images
                         return (
                             <Marker coordinate={{ latitude: coolEvent.latitude, longitude: coolEvent.longitude }}>
-                                <Callout style={styles.callout} onPress={() => { selectEvent(coolEvent) }}>
+                                <Callout style={styles.callout} onPress={() => { selectEvent(coolEvent) }}>                 
                                     <View style={styles.insideCallout}>
                                         <Text>{ coolEvent.title }</Text>
                                         <Image style={{ height: 150, width: 100 }} source={{ uri: coolEvent.img }} />
@@ -98,19 +98,19 @@ const searchSection = () => {
         return dist;
     }
 
-    const handleSearch = () => {
+    const handleSearch = () => {                                               // searching by event title
         let searchedEvents = eventsData.filter(e => e.title.toLowerCase().includes(searchString.toLowerCase()) 
         && getDistanceFromLatLonInKm(latitude, longitude, e.latitude, e.longitude) < distance);
         setEvents(searchedEvents);
     }
 
-    const handleReset = () => {
+    const handleReset = () => {                                                     // reset search data back to eventsData
         setEvents(eventsData);
     }
 
     return (
         <View style={styles.searchSection}>
-            <SearchBar
+            <SearchBar                                                              // event searchbar
             placeholder="Search for board mates..."
             // ref={search => state.search = search}
             onChangeText={(text) => { setSearchString(text) }}
@@ -123,7 +123,7 @@ const searchSection = () => {
                 <Text>
                     Events from {distance.toString()} km away
                 </Text>
-                <Slider 
+                <Slider                                                             // adjustable distance slider
                 value={distance}
                 minimumValue={1}
                 maximumValue={50}
@@ -134,15 +134,15 @@ const searchSection = () => {
                 />
             </View>
             <View style={{ justifyContent: "space-between", flexDirection: "row"}}>
-                <Button 
+                <Button                                                             // reset button
                 onPress={() => {handleReset()}}
                 containerStyle={styles.button}>
-                    <Text style={styles.buttonText}>
+                    <Text style={styles.buttonText}>                                
                         Reset
                     </Text>
                     <Icon name='refresh' color='white' />
                 </Button>
-                <Button
+                <Button                                                             // search button
                 onPress={() => {handleSearch()}}
                 containerStyle={styles.button}>
                     <Text style={styles.buttonText}>
@@ -156,7 +156,7 @@ const searchSection = () => {
 }
 
 const Map = () => {
-    const [latitude, setLatitude] = useState(0.0);
+    const [latitude, setLatitude] = useState(0.0);                                  // all the variables and their hooks
     const [longitude, setLongitude] = useState(0.0);
     const [events, setEvents] = useState([]);
     const [searchString, setSearchString] = useState("");
@@ -171,9 +171,9 @@ const Map = () => {
     //     selectedEvent: null
     // })
 
-    (() => {
+    (() => {                                                                        // funny constructor made out of hooks
         if (constructorHasRun.current !== false) 
-            return; // if this fucks me up istg UPDATE: it ~kinda~ happened lmao
+            return;
         constructorHasRun.current = true;
         // super(props);
         setLatitude(54.35203);
@@ -188,7 +188,7 @@ const Map = () => {
 
     return (
         <View style={styles.container}>
-            <Button
+            <Button                                                                 // sure hope the Back button works
                 title="<"
                 onPress={() => { navigation.navigate('Home'); }}
             />
