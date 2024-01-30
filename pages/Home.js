@@ -1,6 +1,6 @@
 // Home.js
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 const Home = ({ navigation }) => {
     return (
@@ -16,21 +16,21 @@ const Home = ({ navigation }) => {
                     <Text style={styles.buttonText}>Look for Events</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('Map')}>
-                    <Text style={styles.buttonText}>Look for Places</Text>
+                    <Text style={styles.buttonText}>Map</Text>
                 </TouchableOpacity>
             </View>
 
             {/* Middle buttons */}
-            <View style={styles.bottomContainer}>
+            <View style={styles.middleContainer}>
                 <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('Profile')}>
                     <Text style={styles.buttonText}>Profile</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => console.log('Add Event button pressed')}>
+                <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('AddEvent')}>
                     <Text style={styles.buttonText}>Add Event</Text>
                 </TouchableOpacity>
             </View>
             {/* Bottom buttons */}
-            <View style={styles.bottomContainer}>
+            <View style={styles.middleContainer}>
                 <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('Games')}>
                     <Text style={styles.buttonText}>Games</Text>
                 </TouchableOpacity>
