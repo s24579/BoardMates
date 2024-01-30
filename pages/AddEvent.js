@@ -1,15 +1,16 @@
 // AddEvent.js
 import React, { useState } from 'react';
 import { View, Text, Button } from 'react-native';
-// import DatePicker from 'react-native-date-picker';
+import DatePicker from 'react-native-date-picker';
 import dayjs from 'dayjs';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 // import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { CustomInput } from '../utils/CustomInput.js';
 import { AddEventStyles as styles } from '../styles/AddEventStyles.js';
-// import { DatePickerField } from '../components/TheDatePicker.jsx';
+import { DatePickerField } from '../components/TheDatePicker.jsx';
 import { eventsData } from '../services/EventDataMockup.js';
+import { usersData } from '../services/UserDataMockup.js';
 // import {apiKey} from './config';
 
 let nextId = 0
@@ -55,6 +56,7 @@ const AddEvent = () => {
     // const [open, setOpen] = useState(false)
     const [newEvent, setNewEvent] = useState([]);
     const [events, setEvents] = useState(eventsData)
+    const [user, setUser] = useState(usersData.at(0))
 
 (() => {                                                                        // funny constructor made from Hooks
         if (constructorHasRun.current !== false) 
@@ -162,6 +164,7 @@ const AddEvent = () => {
                             name="gameTitle"
                             placeholder='Game Provided'
                             keyboardType="email-address" />  
+                        
                     </View>
                 )}
             </Formik>

@@ -13,6 +13,7 @@ const constructorHasRun = useRef(false);
 
 // onRegionChange = (region) => {
 //     setState({ region });
+//     setRegion()
 // };
 
 const getInitialState = () => {                                                 // starts you off at Gdańsk

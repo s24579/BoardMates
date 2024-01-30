@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "946870286490",
+    "project_id": "acoustic-portal-412508",
+    "storage_bucket": "acoustic-portal-412508.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946870286490:android:21aa3c6fa3e4c693110723",
+        "android_client_info": {
+          "package_name": "com.marcin_real.boardmates"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu80oYBa7SkBWU9D1PWSt-htWjwpvc39Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

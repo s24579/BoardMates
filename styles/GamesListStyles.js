@@ -21,6 +21,17 @@ const gamesListStyles = StyleSheet.create({
         width: 20,
         marginRight: 15,
     },
+    searchInput: {
+        flex: 1,
+        height: 40,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        minWidth:150,
+        maxWidth:250,
+        marginRight:50,
+    },
     headingRight: {
         fontSize: 20,
         fontWeight: 'bold',
@@ -49,6 +60,15 @@ const gamesListStyles = StyleSheet.create({
         fontSize: 10,
         fontWeight: 'bold',
         marginLeft: 'auto',
+    },
+    loadMoreButton: {
+        alignItems: 'center',
+        marginTop: 20,
+    },
+    loadMoreText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: COLORS.brightblue,
     },
 });
 

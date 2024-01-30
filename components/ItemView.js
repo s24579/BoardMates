@@ -13,10 +13,10 @@ const eventItemData = ({ item }) => {
     {/* Left container for event details */}
     return (
         <View style={styles.detailsContainer}>
-            <Text style={styles.detailText}>{`Game: ${item.game}`}</Text>
+            <Text style={styles.detailText}>{`Game: ${item.title}`}</Text>
             <Text style={styles.detailText}>{`Place: ${item.location}`}</Text>
             <Text style={styles.detailText}>{`Date and Time: ${item.dateFrom}`}</Text>
-            <Text style={styles.detailText}>{`Players: ${item.players}`}</Text>
+            <Text style={styles.detailText}>{`Players: ${item.game}`}</Text>
         </View>
     );
 };
