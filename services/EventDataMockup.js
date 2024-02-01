@@ -6,9 +6,9 @@ const placeHolder = <Image uri="./assets/map.png" style={{
     width: 600,
     height: 400,
 }}/>   
-                               // placeholders and mock-ups
+
 const placeScription = "Justice is a 3 to 5-player, thematic, competitive, tableau-building game set in the same Dwarven society of Odrixia where Factory 42 is set, where players, as members of the Council of Law and Order, determine the guilt of accused criminals. It's a trick-taking game where players utilize won cards strategically to influence the fate of suspects. With hidden scoring objectives, 'Justice' presents a blend of cooperation and rivalry, culminating in a thrilling game lasting approximately 45 - 60 minutes. Immerse yourself in this captivating universe and experience the intricate balance between trick-taking mechanics and strategic decision-making."
-const mockDateFrom = dayjs().add(1, "day")
+const mockDateFrom = dayjs().add(1, "day")                      // placeholders and mock-ups
 const mockDateTo = dayjs().add(2, "day")
 
 export let eventsData = [

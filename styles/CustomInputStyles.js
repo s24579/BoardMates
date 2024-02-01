@@ -2,6 +2,10 @@
 import { StyleSheet } from "react-native";
 
 const customInputStyles = StyleSheet.create({
+    container: {
+      flex: 1,
+      padding: 15,
+    },
     textInput: {
       height: 40,
       width: '100%',
@@ -14,6 +18,7 @@ const customInputStyles = StyleSheet.create({
     errorText: {
       fontSize: 10,
       color: 'red',
+      alignSelf: 'stretch',
     },
     errorInput: {
       borderColor: 'red',

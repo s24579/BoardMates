@@ -33,7 +33,7 @@ const Home = () => {
                 <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('Profile')}>
                     <Text style={styles.buttonText}>Profile</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('AddEvent')}>
+                <TouchableOpacity style={[styles.buttonContainer, styles.squaredButton]} onPress={() => navigation.navigate('HookAddEvent')}>
                     <Text style={styles.buttonText}>Add Event</Text>
                 </TouchableOpacity>
             </View>

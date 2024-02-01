@@ -1,7 +1,7 @@
 // AddEvent.js
 import React, { useState } from 'react';
 import { View, Text, Button } from 'react-native';
-import DatePicker from 'react-native-date-picker';
+import DatePicker from 'react-native-datepicker';
 import dayjs from 'dayjs';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -51,9 +51,9 @@ const eventValidationSchema = Yup.object({                                      
 
 const AddEvent = () => {
     const constructorHasRun = useRef(false);
-    // const [dateFrom, setDateFrom] = useState(new Date())
-    // const [dateTo, setDateTo] = useState(new Date())
-    // const [open, setOpen] = useState(false)
+    const [dateFrom, setDateFrom] = useState(new Date())
+    const [dateTo, setDateTo] = useState(new Date())
+    const [open, setOpen] = useState(false)
     const [newEvent, setNewEvent] = useState([]);
     const [events, setEvents] = useState(eventsData)
     const [user, setUser] = useState(usersData.at(0))

@@ -23,6 +23,11 @@ const addEventStyles = StyleSheet.create({
         fontSize: 16,
         color: 'red',
     },
+    button: {
+        color: 'white',
+        backgroundColor: COLORS.brightblue,
+        justifyContent: 'center',
+    }
 });
 
 export { addEventStyles };
