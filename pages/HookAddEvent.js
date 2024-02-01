@@ -6,6 +6,7 @@ import { CustomInput } from "../utils/CustomInput.js";
 import { AddEventStyles as styles } from '../styles/AddEventStyles.js';
 import { eventsData } from "../services/EventDataMockup.js";
 import allGames from './bgg/GamesData.json';
+import { fontSize } from "@mui/system";
 
 // const Input = ({ name, control }) => {
 //     const { field } = useController({
@@ -31,7 +32,7 @@ const placeHolder = <Image uri="./assets/map.png" style={{
 const mockDateFrom = dayjs().add(1, "day")                      // placeholders and mock-ups
 const mockDateTo = dayjs().add(2, "day")
 
-const AddEvent = () => {
+const AddEvent = ({ navigation }) => {
     const [dateFrom, setDateFrom] = useState(new Date())
     const [dateTo, setDateTo] = useState(new Date())
     const [open, setOpen] = useState(false)
@@ -79,6 +80,7 @@ const AddEvent = () => {
     
     return (
         <View style={styles.container}>
+            <Text style={{ fontSize: 24, padding: 10, }}>Add your own event</Text>
             <CustomInput
             name="title"
             placeholder="Event title"

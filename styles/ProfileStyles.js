@@ -1,12 +1,12 @@
 // styles/ProfileStyles.js
 import { StyleSheet } from "react-native";
-import { COLORS } from "./Colors";
 
 const profileStyles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        padding: 16,
     },
     topBar: {
         flexDirection: 'row',
@@ -19,6 +19,21 @@ const profileStyles = StyleSheet.create({
     titleText: {
         fontSize: 24,
     },
+    buttonContainer: {
+        flexDirection: 'column',
+        alignItems: 'flex-end',
+    },
+    avatar: {
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        marginVertical: 20,
+    },
+    descriptionText: {
+        fontSize: 16,
+        textAlign: 'center',
+        marginBottom: 20,
+    },
     section: {
         marginTop: 20,
         width: '80%',
@@ -30,7 +45,7 @@ const profileStyles = StyleSheet.create({
     placeholder: {
         width: '100%',
         height: 50,
-        backgroundColor: COLORS.lightgray,
+        backgroundColor: '#ccc',
         marginBottom: 10,
     },
 });
