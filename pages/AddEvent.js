@@ -1,7 +1,7 @@
 // AddEvent.js
 import React, { useState } from 'react';
 import { View, Text, Button } from 'react-native';
-import DatePicker from 'react-native-datepicker';
+// import DatePicker from 'react-native-datepicker';
 import dayjs from 'dayjs';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -132,7 +132,7 @@ const AddEvent = () => {
                             />
                         </SafeAreaView> */}
                         <Text style={styles.input}>from</Text>
-                        <DatePickerField style={styles.input}                   // Date fields (not sure if they work)
+                        {/* <DatePickerField style={styles.input}                   // Date fields (not sure if they work)
                             // component={CustomInput} 
                             name="dateFrom" />
                         <DatePickerField style={styles.input}
@@ -158,7 +158,7 @@ const AddEvent = () => {
                             } }
                             onCancel={() => {
                                 setOpen(false);
-                            } } />
+                            } } /> */}
                         <Field style={styles.input}                             // add adding images to Events after this
                             component={CustomInput}
                             name="gameTitle"

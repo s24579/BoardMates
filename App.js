@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { LocalizationProvider } from "@mui/x-date-pickers";
+// import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { enableLatestRenderer } from 'react-native-maps';
 import { enableScreens } from 'react-native-screens';
@@ -20,7 +20,7 @@ enableScreens();
 
 const App = () => {
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        // <LocalizationProvider dateAdapter={AdapterDayjs}>
             <NavigationContainer>
                 <Stack.Navigator initialRouteName="Login">
                     <Stack.Screen name="Home" component={Home} />
@@ -34,7 +34,7 @@ const App = () => {
                     <Stack.Screen name="Login" component={Login} />
                 </Stack.Navigator>
             </NavigationContainer>
-        </LocalizationProvider>
+        // </LocalizationProvider>
     );
 };
 

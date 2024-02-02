@@ -2,11 +2,12 @@ import React from "react";
 import { TextInput, Button, SafeAreaView } from "react-native";
 import { dayjs } from "dayjs";
 import { useForm, Controller } from "react-hook-form";
+import DatePicker from 'react-native-datepicker';
 import { CustomInput } from "../utils/CustomInput.js";
 import { AddEventStyles as styles } from '../styles/AddEventStyles.js';
 import { eventsData } from "../services/EventDataMockup.js";
 import allGames from './bgg/GamesData.json';
-import { fontSize } from "@mui/system";
+import { title } from "process";
 
 // const Input = ({ name, control }) => {
 //     const { field } = useController({
@@ -33,9 +34,9 @@ const mockDateFrom = dayjs().add(1, "day")                      // placeholders 
 const mockDateTo = dayjs().add(2, "day")
 
 const AddEvent = ({ navigation }) => {
-    const [dateFrom, setDateFrom] = useState(new Date())
-    const [dateTo, setDateTo] = useState(new Date())
-    const [open, setOpen] = useState(false)
+    // const [dateFrom, setDateFrom] = useState(new Date())
+    // const [dateTo, setDateTo] = useState(new Date())
+    // const [open, setOpen] = useState(false)
     const [newEvent, setNewEvent] = useState([]);
     const [events, setEvents] = useState(eventsData)
     const {
@@ -61,18 +62,19 @@ const AddEvent = ({ navigation }) => {
         }
         let submittedEvent = {                                                  // data for transfer to the EventsData array
             id: nextId++, 
-            title: Yup.eventTitle, 
-            game: Yup.gameTitle, 
-            description: Yup.description,
+            title: control.title, 
+            game: control.game, 
+            description: control.description,
             img: placeHolder,
-            location: Yup.locationName, 
+            location: control.location, 
             latitude: 160.00000,
             longitude: 16.0000,
-            dateFrom: Yup.dateFrom, 
-            dateTo: Yup.dateTo,
+            dateFrom: mockDateFrom, 
+            dateTo: mockDateTo,
         }
         setNewEvent(submittedEvent);
         setEvents([...eventsData, newEvent]);                                   // gets placed on the bottom of the array
+        navigation.navigate('Map')
     }
 
     setNewEvent(newEvent);
@@ -145,7 +147,7 @@ const AddEvent = ({ navigation }) => {
             />
             { errors.location && <Text style={styles.error}>This space is required.</Text> }
             <Text style={styles.input}>from</Text>
-            <Controller 
+            {/* <Controller 
             control={control}
             rules={{
                 required: true,
@@ -197,7 +199,7 @@ const AddEvent = ({ navigation }) => {
                 )}
             name="dateTo"
             />
-            { errors.dateTo && <Text style={styles.error}>This space is required.</Text> }
+            { errors.dateTo && <Text style={styles.error}>This space is required.</Text> } */}
             <Button
             title="ALL DONE!"
             style={styles.button}
